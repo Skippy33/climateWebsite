@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../static/css/homepage.css">
+    <title>See Climate Change in your area over time!</title>
+  </head>
+  <body>
+    <div class="content">
+      <br>
+      <h2>This site graphs temperature/climate over time in an area to help visualize global warming. Put in a location (name or decimal GPS), start time, and end time for 
+        the information. All information is from local weather stations. Watch out for names with multiple locations, you may need to specify principality. Ex; 91 towns 
+        are named "Washington" in the US. </h2>
+        <br>
+      <form action="/data/" method = "POST">
+        <p>Location (GPS or name) <input type = "text" name = "location" /></p>
+
+        <p>Start time <input type="range" name="startTime" min="1800" max="2019" value="1950" class="slider" id="startTime" oninput="this.nextElementSibling.value = this.value">
+          <output>1950</output></p>
+          
+        <p>End time <input type="range" name="endTime" min="1800" max="2019" value="2019" class="slider" id="endTime" oninput="this.nextElementSibling.value = this.value">
+          <output>2019</output></p>
+          
+        <p><input type = "submit" value = "submit" /></p>
+      </form>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for msg in messages %}
+            <p>{{msg}}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+  </div>
+  </body>
+</html>
